@@ -1,0 +1,316 @@
+@import "normalize";
+@import "common";
+@import "variables";
+
+// Header
+.header {
+    width: 100%;
+
+    .space {
+        padding: 0 6rem;
+    }
+
+    &__top {
+        background-color: $secondary-color-orange;
+    }
+
+    .nav {
+        width: 35.3rem;
+
+        &__item {
+            padding: 0.9rem 4rem;
+
+            a {
+                font-size: $font-p - 0.4rem;
+                color: black;
+            }
+        }
+
+        &__item.active {
+            a {
+                color: $white;
+            }
+
+            background-color: $black;
+            border-radius: 2rem 2rem 0 0;
+        }
+    }
+
+    &__bottom {
+        margin-top: 1rem;
+
+        .logo img {
+            height: 5.3rem;
+            width: 15.7rem;
+        }
+    }
+
+    .burger {
+        display: none;
+        cursor: pointer;
+
+        svg {
+            width: 4rem;
+            height: 4rem;
+        }
+    }
+}
+
+@media screen and (max-width: $small) {
+    .header {
+        &__top.space {
+            padding: 0;
+        }
+
+        &__bottom.space {
+            padding: 0 1.6rem;
+        }
+
+        .burger {
+            display: block;
+        }
+
+        .btn {
+            display: none;
+        }
+    }
+}
+
+// End Header
+
+// Hero
+
+.hero--background {
+    background: url("../img/hero/hero.png") no-repeat right bottom;
+    background-size: contain;
+    padding-bottom: 12.5rem;
+}
+
+.hero {
+    margin: 8.2rem 0 0 5rem;
+    width: 67.1rem;
+
+    &__subtitle {
+        margin: 2rem 0 4rem;
+        width: 53.4rem;
+    }
+}
+
+@media screen and (max-width: $small) {
+    .hero,
+    .hero__subtitle {
+        width: 100%;
+    }
+
+    .hero--background {
+        padding-bottom: 38rem;
+        background: url("../img/hero/hero--small.png") no-repeat right bottom;
+        background-size: 32.5rem;
+    }
+
+    .hero {
+        margin: 5rem 0 0 0;
+
+        .btn {
+            width: 100%;
+        }
+    }
+}
+
+// End Hero
+
+// About Budss
+
+.budss {
+    background: url("../../assets/img/budss/budss.png") no-repeat bottom left;
+    background-size: 37.3rem;
+
+    .wrapper {
+        align-items: flex-start;
+    }
+
+    &__title {
+        margin-bottom: 8rem;
+    }
+
+    .advantages {
+        margin-left: 14rem;
+        display: grid;
+        grid-template-columns: repeat(2, 33rem);
+        gap: 7rem;
+
+        &__img img {
+            width: 10rem;
+            height: 10rem;
+        }
+
+        &__subtitle {
+            margin-top: 2rem;
+
+            p {
+                font-size: $font-p + 0.4rem;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: $large) {
+    .budss {
+        background: none;
+
+        .wrapper {
+            flex-direction: column;
+        }
+
+        .advantages {
+            margin-left: 0;
+        }
+
+        &__subtitle {
+            margin-bottom: 4rem;
+        }
+    }
+}
+
+@media screen and (max-width: $small) {
+    .budss {
+        &__title {
+            margin-bottom: 3rem;
+        }
+
+        &__subtitle {
+            width: 27rem;
+        }
+
+        .advantages {
+            grid-template-columns: repeat(1, 1fr);
+            gap: 6rem;
+
+            &__subtitle p {
+                font-size: $font-p - 0.4rem;
+            }
+        }
+
+        br {
+            display: none;
+        }
+    }
+}
+
+// End About Budss
+
+// How works
+
+.how_works {
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+    position: relative;
+    padding: 5rem 0;
+
+    &__background {
+        width: 100%;
+        display: grid;
+        row-gap: 10.5rem;
+    }
+
+    &--right,
+    &--left {
+        width: max-content;
+
+        h2 {
+            color: $black;
+            text-shadow:
+                -1px -1px 0 $grayscale,
+                1px -1px 0 $grayscale,
+                -1px 1px 0 $grayscale,
+                1px 1px 0 $grayscale;
+            font-size: $font-h * 2 + 3.2rem;
+            text-transform: uppercase;
+
+            span.orange,
+            span.blue,
+            span.turquoise {
+                text-shadow: none;
+            }
+
+            span.orange {
+                color: $secondary-color-orange;
+            }
+
+            span.blue {
+                color: $primary-color-blue;
+            }
+
+            span.turquoise {
+                color: $turquoise;
+            }
+        }
+    }
+
+    &--right {
+        animation: move 30s linear infinite;
+    }
+
+    &--left {
+        animation: move 30s linear infinite reverse;
+    }
+
+    @keyframes move {
+        from {
+            transform: translateX(0);
+        }
+        to {
+            transform: translateX(-40%);
+        }
+    }
+
+    &__img {
+        position: absolute;
+        top: 0;
+
+        img {
+            width: 30.8rem;
+            height: 62.3rem;
+        }
+    }
+}
+
+@media screen and (max-width: $small) {
+    .how_works {
+        padding: 9rem 0;
+
+        &__background {
+            row-gap: 8.5rem;
+        }
+
+        &--right,
+        &--left {
+            h2 {
+                font-size: $font-h;
+            }
+        }
+
+        &__img {
+            top: 3.5rem;
+
+            img {
+                width: 22.8rem;
+                height: 46.1rem;
+            }
+        }
+    }
+}
+
+// End How works
+
+// Achievements
+
+.achievements {
+    background-color: $primary-color-blue;
+    padding: 4rem 0;
+}
+
+// Подумать насчет h2 и 64px font size сука... какой хороший человек делал этот макет...
+
+// End Achievements
