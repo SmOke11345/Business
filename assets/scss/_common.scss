@@ -38,6 +38,9 @@ section {
     section {
         margin-bottom: 4rem;
     }
+    .padding-responsive {
+        padding: 4rem 0;
+    }
 }
 
 .wrapper {
@@ -85,5 +88,9 @@ span.accent {
         top: 0.7rem;
         right: -1rem;
         left: -0.4rem;
+    }
+
+    br {
+        display: none;
     }
 }

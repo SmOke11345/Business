@@ -121,18 +121,20 @@
 
 // About Budss
 
-.budss {
+.section_budss {
     background: url("../../assets/img/budss/budss.png") no-repeat bottom left;
     background-size: 37.3rem;
-
-    .wrapper {
-        align-items: flex-start;
-    }
 
     &__title {
         margin-bottom: 8rem;
     }
+}
 
+.budss.wrapper {
+    align-items: flex-start;
+}
+
+.budss {
     .advantages {
         margin-left: 14rem;
         display: grid;
@@ -155,13 +157,15 @@
 }
 
 @media screen and (max-width: $large) {
-    .budss {
+    .section_budss {
         background: none;
+    }
 
-        .wrapper {
-            flex-direction: column;
-        }
+    .budss.wrapper {
+        flex-direction: column;
+    }
 
+    .budss {
         .advantages {
             margin-left: 0;
         }
@@ -173,11 +177,11 @@
 }
 
 @media screen and (max-width: $small) {
-    .budss {
-        &__title {
-            margin-bottom: 3rem;
-        }
+    .section_budss__title {
+        margin-bottom: 3rem;
+    }
 
+    .budss {
         &__subtitle {
             width: 27rem;
         }
@@ -201,7 +205,7 @@
 
 // How works
 
-.how_works {
+.section_how-works {
     display: flex;
     justify-content: center;
     overflow: hidden;
@@ -249,19 +253,19 @@
     }
 
     &--right {
-        animation: move 30s linear infinite;
+        animation: move 30s linear infinite forwards;
     }
 
     &--left {
-        animation: move 30s linear infinite reverse;
+        animation: move 30s linear infinite forwards reverse;
     }
 
     @keyframes move {
-        from {
+        0% {
             transform: translateX(0);
         }
-        to {
-            transform: translateX(-40%);
+        100% {
+            transform: translateX(-50%);
         }
     }
 
@@ -277,7 +281,7 @@
 }
 
 @media screen and (max-width: $small) {
-    .how_works {
+    .section_how-works {
         padding: 9rem 0;
 
         &__background {
@@ -306,11 +310,198 @@
 
 // Achievements
 
-.achievements {
+.section_achievements {
     background-color: $primary-color-blue;
     padding: 4rem 0;
 }
 
-// Подумать насчет h2 и 64px font size сука... какой хороший человек делал этот макет...
+.achievements.wrapper {
+    justify-content: center;
+}
+
+.achievements {
+    &__item--wrap:not(:last-child) {
+        margin-right: 10rem;
+    }
+
+    &__item--wrap {
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__subtitle {
+        margin-top: 1.6rem;
+
+        p {
+            font-size: $font-p + 0.4rem;
+            font-weight: 600;
+        }
+    }
+}
+
+@media screen and (max-width: $small) {
+    .achievements.wrapper {
+        display: grid;
+        row-gap: 4rem;
+    }
+    .achievements {
+        &__item--wrap {
+            &:not(:last-child) {
+                margin-right: 0;
+            }
+
+            flex-direction: row;
+            align-items: center;
+        }
+
+        &__subtitle {
+            margin: 0 0 0 1.6rem;
+
+            p {
+                font-size: $font-p;
+            }
+        }
+    }
+}
 
 // End Achievements
+
+// Why budss
+
+.section_why-budss {
+    .grid {
+        color: $black;
+        display: grid;
+        row-gap: 2rem;
+
+        &__item {
+            background-color: $grayscale-2;
+            border-radius: 3rem;
+            padding: 4rem 4rem 5rem 4rem;
+            overflow: hidden;
+            position: relative;
+        }
+
+        &__item__img {
+            position: absolute;
+            bottom: -0.6rem;
+        }
+
+        &__wrap--top,
+        &__wrap--bottom {
+            display: grid;
+            gap: 2rem;
+        }
+
+        &__wrap--top {
+            grid-template-columns: 2fr 1.45fr;
+        }
+
+        &__wrap--bottom {
+            grid-template-columns: 1.45fr 2fr;
+        }
+
+        &__wrap--top {
+            .grid__item:first-child {
+                .wrap {
+                    padding-left: 28rem;
+                }
+
+                .grid__item__img {
+                    top: 0;
+                    left: 0;
+                    bottom: 0;
+
+                    img {
+                        width: 33.1rem;
+                        border-radius: 3rem 0 0 3rem;
+                    }
+                }
+            }
+
+            .grid__item:nth-child(2) {
+                padding-right: 7rem;
+
+                .grid__item__img {
+                    right: 0;
+
+                    img {
+                        width: 46rem;
+                    }
+                }
+            }
+        }
+
+        &__wrap--bottom {
+            .grid__item:first-child {
+                .grid__title {
+                    width: 45rem;
+                }
+
+                .grid__subtitle {
+                    width: 30.8rem;
+                }
+
+                .grid__item__img {
+                    right: 0;
+
+                    img {
+                        width: 20rem;
+                        border-radius: 0 0 3rem 0;
+                    }
+                }
+            }
+
+            .grid__item:last-child {
+                .wrap {
+                    padding-right: 24rem;
+                }
+
+                .grid__item__img {
+                    right: 3rem;
+
+                    img {
+                        width: 21rem;
+                    }
+                }
+            }
+        }
+
+        &__subtitle {
+            margin-top: 2rem;
+        }
+    }
+}
+
+@media screen and (max-width: $large) {
+    .section_why-budss .grid {
+        &__wrap--top {
+            grid-template-columns: 1fr;
+        }
+
+        &__wrap--bottom {
+            grid-template-columns: 1fr;
+        }
+    }
+}
+
+.why-budss {
+    text-align: center;
+    margin-bottom: 7rem;
+
+    &__subtitle {
+        margin-top: 2rem;
+    }
+}
+
+@media screen and (max-width: $small) {
+    .section_why-budss .container {
+        padding: 0 1.3rem;
+    }
+
+    .why-budss {
+        margin-bottom: 4rem;
+    }
+}
+
+// End Why budss
