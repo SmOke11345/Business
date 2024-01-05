@@ -1,96 +1,120 @@
 @import "variables";
 
 .container {
-    width: 133.2rem;
-    padding: 0 1.6rem;
-    margin: 0 auto;
+	width: 133.2rem;
+	padding: 0 1.6rem;
+	margin: 0 auto;
 }
 
 @media screen and (min-width: $extra-large) {
-    .container {
-        width: 130rem;
-    }
+	.container {
+		width: 130rem;
+	}
 }
 
 @media screen and (max-width: $large) {
-    .container {
-        width: 96rem;
-    }
+	.container {
+		width: 96rem;
+	}
 }
 
 @media screen and (max-width: $medium) {
-    .container {
-        width: 72rem;
-    }
+	.container {
+		width: 72rem;
+	}
 }
 
 @media screen and (max-width: $small) {
-    .container {
-        width: 100%;
-    }
+	.container {
+		width: 100%;
+	}
+}
+
+.logo img {
+	height: 5.3rem;
+	width: 15.7rem;
 }
 
 section {
-    margin-bottom: 10rem;
+	margin-bottom: 10rem;
 }
 
 @media screen and (max-width: $small) {
-    section {
-        margin-bottom: 4rem;
-    }
-    .padding-responsive {
-        padding: 4rem 0;
-    }
+	section {
+		margin-bottom: 4rem;
+	}
+	.padding-responsive {
+		padding: 4rem 0;
+	}
 }
 
 .wrapper {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
 }
 
 .btn {
-    font-family: "Outfit", sans-serif;
-    font-weight: 600;
-    font-size: $font-p - 0.2rem;
-    background-color: $primary-color-blue;
-    padding: 1.6rem 3rem;
-    border-radius: 1.6rem;
-    color: $white;
+	font-family: "Outfit", sans-serif;
+	font-weight: 600;
+	font-size: $font-p - 0.2rem;
+	background-color: $primary-color-blue;
+	padding: 1.6rem 3rem;
+	border-radius: 1.6rem;
+	color: $white;
 
-    &:hover {
-        outline: 0.1rem inset $primary-color-blue;
-        background-color: $black;
-    }
+	&:hover {
+		outline: 0.1rem inset $primary-color-blue;
+		background-color: $black;
+	}
 }
 
 span.accent {
-    position: relative;
+	position: relative;
 
-    &::before {
-        content: "";
-        background-color: $primary-color-blue;
-        transform: rotate(-1.67deg);
-        height: 3.4rem;
-        border-radius: 3rem;
-        display: block;
-        z-index: -1;
-        position: absolute;
-        top: 1rem;
-        right: -1.3rem;
-        left: -0.7rem;
-    }
+	&::before {
+		content: "";
+		background-color: $primary-color-blue;
+		transform: rotate(-1.67deg);
+		height: 3.4rem;
+		border-radius: 3rem;
+		display: block;
+		z-index: -1;
+		position: absolute;
+		top: 1rem;
+		right: -1.3rem;
+		left: -0.7rem;
+	}
 }
 
 @media screen and (max-width: $small) {
-    span.accent::before {
-        height: 2.2rem;
-        top: 0.7rem;
-        right: -1rem;
-        left: -0.4rem;
-    }
+	span.accent::before {
+		height: 2.2rem;
+		top: 0.7rem;
+		right: -1rem;
+		left: -0.4rem;
+	}
 
-    br {
-        display: none;
-    }
+	br {
+		display: none;
+	}
+}
+
+.section_wrap {
+	padding: 10rem 0;
+	background-color: $grayscale-2;
+	color: $black;
+	display: grid;
+	row-gap: 10rem;
+
+	section {
+		margin-bottom: 0;
+	}
+}
+
+@media screen and (max-width: $small) {
+	.section_wrap {
+		padding: 4rem 0;
+		row-gap: 4rem;
+	}
 }

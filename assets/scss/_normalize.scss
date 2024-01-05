@@ -2,47 +2,47 @@
 @import "variables";
 
 * {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
 }
 
 :active,
 :hover,
 :focus {
-    outline: 0;
-    outline-offset: 0;
+	outline: 0;
+	outline-offset: 0;
 }
 
 html {
-    font-family: "Outfit", sans-serif;
-    font-weight: 400;
-    font-size: 0.694vw; // при разрешении 1440px шрифт 10px
+	font-family: "Outfit", sans-serif;
+	font-weight: 400;
+	font-size: 0.694vw; // при разрешении 1440px шрифт 10px
 }
 
 @media screen and (max-width: $large) {
-    html {
-        font-size: 1.01vw;
-    }
+	html {
+		font-size: 1.01vw;
+	}
 }
 
 @media screen and (max-width: $medium) {
-    html {
-        font-size: 1.3vw;
-    }
+	html {
+		font-size: 1.3vw;
+	}
 }
 
 @media screen and (max-width: $small) {
-    html {
-        font-size: 2.67vw;
-    }
+	html {
+		font-size: 2.67vw;
+	}
 }
 
 body {
-    background-color: $black;
-    font-size: $font-p;
-    color: $white;
-    height: 100vh;
+	background-color: $black;
+	font-size: $font-p;
+	color: $white;
+	height: 100vh;
 }
 
 h1,
@@ -51,66 +51,73 @@ h3,
 h4,
 h5,
 h6 {
-    font-weight: 700;
-    font-family: "Outfit", sans-serif;
+	font-weight: 700;
+	font-family: "Outfit", sans-serif;
 }
 
 h1,
-h2 {
-    font-size: $font-h * 2;
-    line-height: 10.6rem;
+h2,
+h2.unique {
+	font-size: $font-h * 2;
+	line-height: 10rem;
 }
 
 h2.font_64 {
-    font-size: $font-h + 1.6rem;
-    line-height: 6.8rem;
+	font-size: $font-h + 1.6rem;
+	line-height: 6.8rem;
 }
 
 @media screen and (max-width: $small) {
-    h1,
-    h2,
-    h2.font_64 {
-        font-size: $font-h - 0.8rem;
-        line-height: normal;
-    }
+	h1,
+	h2,
+	h2.font_64,
+	h2.unique {
+		font-size: $font-h - 0.8rem;
+		line-height: normal;
+	}
 }
 
 h3 {
-    font-size: $font-h;
+	font-size: $font-h;
 }
 
 h4.semi-bold {
-    font-size: $font-h - 1.2rem;
-    font-weight: 600;
+	font-size: $font-h - 1.2rem;
+	font-weight: 600;
 }
 
 p {
-    line-height: 2.8rem;
+	line-height: 2.8rem;
 }
 
 @media screen and (max-width: $small) {
-    h3 {
-        font-size: $font-h - 1.6rem;
-    }
+	h3 {
+		font-size: $font-h - 1.6rem;
+	}
 
-    h4.semi-bold {
-        font-size: $font-h - 2.4rem;
-    }
+	h4.semi-bold {
+		font-size: $font-h - 2.4rem;
+	}
 
-    p {
-        line-height: 2rem;
-    }
+	p {
+		font-size: $font-p - 0.4rem;
+		line-height: 2.1rem;
+	}
 }
 
 a {
-    text-decoration: none;
-    font-size: $font-p;
-    color: $white;
-    font-weight: 500;
+	text-decoration: none;
+	font-size: $font-p;
+	color: $white;
+	font-weight: 500;
+}
+
+ul li {
+	list-style: none;
 }
 
 button {
-    border: none;
-    background-color: transparent;
-    cursor: pointer;
+	border: none;
+	background-color: transparent;
+	cursor: pointer;
 }
