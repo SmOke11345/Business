@@ -1,120 +1,204 @@
 @import "variables";
 
 .container {
-	width: 133.2rem;
-	padding: 0 1.6rem;
-	margin: 0 auto;
+    width: 133.2rem;
+    padding: 0 1.6rem;
+    margin: 0 auto;
 }
 
 @media screen and (min-width: $extra-large) {
-	.container {
-		width: 130rem;
-	}
+    .container {
+        width: 130rem;
+    }
 }
 
 @media screen and (max-width: $large) {
-	.container {
-		width: 96rem;
-	}
+    .container {
+        width: 96rem;
+    }
 }
 
 @media screen and (max-width: $medium) {
-	.container {
-		width: 72rem;
-	}
+    .container {
+        width: 72rem;
+    }
 }
 
 @media screen and (max-width: $small) {
-	.container {
-		width: 100%;
-	}
+    .container {
+        width: 100%;
+    }
 }
 
 .logo img {
-	height: 5.3rem;
-	width: 15.7rem;
+    height: 5.3rem;
+    width: 15.7rem;
 }
 
 section {
-	margin-bottom: 10rem;
+    margin-bottom: 10rem;
 }
 
 @media screen and (max-width: $small) {
-	section {
-		margin-bottom: 4rem;
-	}
-	.padding-responsive {
-		padding: 4rem 0;
-	}
+    .logo img {
+        width: 12.4rem;
+    }
+    section {
+        margin-bottom: 4rem;
+    }
+    .padding-responsive {
+        padding: 4rem 0;
+    }
 }
 
 .wrapper {
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .btn {
-	font-family: "Outfit", sans-serif;
-	font-weight: 600;
-	font-size: $font-p - 0.2rem;
-	background-color: $primary-color-blue;
-	padding: 1.6rem 3rem;
-	border-radius: 1.6rem;
-	color: $white;
+    cursor: pointer;
+    width: 18.2rem;
+    text-align: center;
+    padding: 1.6rem 3rem;
+    border-radius: 1.6rem;
+    transition: all 0.4s ease-in-out;
+    position: relative;
+    overflow: hidden;
 
-	&:hover {
-		outline: 0.1rem inset $primary-color-blue;
-		background-color: $black;
-	}
+    a {
+        font-weight: 600;
+    }
+
+    &:hover {
+        transform: scale(105%);
+
+        &::after {
+            transform: rotate(-9deg) translateX(20rem);
+        }
+    }
+
+    &::after {
+        transition: transform 0.3s;
+        content: "";
+        position: absolute;
+        top: 0.8rem;
+        left: -20rem;
+        width: 20rem;
+        height: 10rem;
+        border-radius: 4rem;
+        z-index: -1;
+    }
+
+    &--primary {
+        background-color: $primary-color-blue;
+
+        &:hover {
+            background-color: $black;
+        }
+
+        &:focus {
+            outline: 0.4rem solid $primary-color-blue-3;
+        }
+
+        &:active {
+            background-color: $primary-color-blue-2;
+        }
+
+        &:disabled {
+            cursor: not-allowed;
+            background-color: $grayscale-4;
+        }
+
+        &::after {
+            background-color: $black;
+        }
+    }
+
+    &--secondary {
+        background-color: $black;
+        outline: 0.2rem solid $primary-color-blue;
+
+        &:hover {
+            background-color: rgba($primary-color-blue, 0.2);
+        }
+
+        &:active {
+            outline: 0.2rem solid $primary-color-blue-4;
+        }
+
+        &:disabled {
+            cursor: not-allowed;
+            color: $grayscale-4;
+            outline: 0.2rem solid $grayscale-4;
+
+            &:hover {
+                background-color: $black;
+            }
+        }
+
+        &::after {
+            background-color: rgba($primary-color-blue, 0.2);
+        }
+    }
+
+    &--outline {
+        border: 0.2rem solid $primary-color-blue;
+        background-color: transparent;
+
+        a {
+            color: $black;
+        }
+    }
 }
 
 span.accent {
-	position: relative;
+    position: relative;
 
-	&::before {
-		content: "";
-		background-color: $primary-color-blue;
-		transform: rotate(-1.67deg);
-		height: 3.4rem;
-		border-radius: 3rem;
-		display: block;
-		z-index: -1;
-		position: absolute;
-		top: 1rem;
-		right: -1.3rem;
-		left: -0.7rem;
-	}
+    &::before {
+        content: "";
+        background-color: $primary-color-blue;
+        transform: rotate(-1.67deg);
+        height: 3.4rem;
+        border-radius: 3rem;
+        display: block;
+        z-index: -1;
+        position: absolute;
+        top: 1rem;
+        right: -1.3rem;
+        left: -0.7rem;
+    }
 }
 
 @media screen and (max-width: $small) {
-	span.accent::before {
-		height: 2.2rem;
-		top: 0.7rem;
-		right: -1rem;
-		left: -0.4rem;
-	}
+    span.accent::before {
+        height: 2.2rem;
+        top: 0.7rem;
+        right: -1rem;
+        left: -0.4rem;
+    }
 
-	br {
-		display: none;
-	}
+    br {
+        display: none;
+    }
 }
 
 .section_wrap {
-	padding: 10rem 0;
-	background-color: $grayscale-2;
-	color: $black;
-	display: grid;
-	row-gap: 10rem;
+    padding: 10rem 0;
+    background-color: $grayscale-2;
+    color: $black;
+    display: grid;
+    row-gap: 10rem;
 
-	section {
-		margin-bottom: 0;
-	}
+    section {
+        margin-bottom: 0;
+    }
 }
 
 @media screen and (max-width: $small) {
-	.section_wrap {
-		padding: 4rem 0;
-		row-gap: 4rem;
-	}
+    .section_wrap {
+        padding: 4rem 0;
+        row-gap: 4rem;
+    }
 }
