@@ -63,25 +63,115 @@ const closeMenu = document.querySelector(".close"),
     openMenu = document.querySelector(".open"),
     burger = document.querySelector(".burger-menu");
 
-/**
- * Открытие бургер меню
- */
 closeMenu.onclick = () => {
     burger.style.display = "none";
 };
 
-/**
- * Закрытие бургер меню
- */
 openMenu.onclick = () => {
     burger.style.display = "block";
 };
 
 /**
- * Скрытие cookie
+ * Скрытие, отрытие модальных окон
  */
-const cookieModal = document.querySelector(".cookie-modal");
+const modalCookie = document.querySelector(".modal_cookie"),
+    modalForm = document.getElementById("modal_form"),
+    modalOverlay = document.getElementById("modal-overlay");
 
 const closeCookieModal = () => {
-    cookieModal.style.display = "none";
+    modalCookie.style.display = "none";
+};
+
+const openFormModal = () => {
+    modalForm.style.display = "block";
+    modalOverlay.style.display = "block";
+};
+
+const closeFormModal = () => {
+    modalForm.style.display = "none";
+    modalOverlay.style.display = "none";
+};
+
+modalOverlay.addEventListener("click", () => {
+    closeFormModal();
+});
+
+const openSuccessModal = () => {
+    console.log("hello world");
+};
+
+/**
+ * Валидация полей
+ */
+const name = document.getElementById("name"),
+    fieldNameError = document.querySelector(".name-error"),
+    email = document.getElementById("email"),
+    fieldEmailError = document.querySelector(".email-error"),
+    phone = document.getElementById("phone"),
+    fieldPhoneError = document.querySelector(".phone-error");
+
+// TODO: Придумать как сделать, чтобы пропускать данные после успешной валидации.
+let error = 0;
+// TODO: так же как-то вывести общие сообщения об ошибках
+/**
+ * Валидация формы перед отправлением
+ */
+const validationFieldsForm = () => {
+    if (!name.value) {
+        fieldNameError.innerText = "This field is required.";
+    } else if (name.value) {
+        fieldNameError.innerText = "";
+    }
+
+    if (!email.value) {
+        fieldEmailError.innerText = "This field is required.";
+    } else if (email.value) {
+        fieldEmailError.innerText = "";
+    }
+
+    if (!phone.value) {
+        fieldPhoneError.innerText = "This field is required.";
+    } else if (phone.value) {
+        fieldPhoneError.innerText = "";
+    }
+
+    console.log(error);
+
+    return error === 0;
+};
+
+/**
+ * Валидация полей при вводе
+ */
+email.addEventListener("input", () => {
+    if (!email.checkValidity()) {
+        fieldEmailError.innerText = "Invalid email";
+    } else {
+        fieldEmailError.innerText = "";
+    }
+});
+
+phone.addEventListener("input", () => {
+    const pattern = /^\+7[0-9]{3}-[0-9]{3}-[0-9]{2}-[0-9]{2}$/;
+
+    // Проверяем есть ли в value phone regex
+    if (!phone.value.match(pattern)) {
+        console.log(phone.value.match);
+        fieldPhoneError.innerText = "Invalid phone";
+    } else {
+        fieldPhoneError.innerText = "";
+    }
+});
+
+/**
+ * Отправка формы
+ * @param event
+ */
+const onSubmit = (event) => {
+    event.preventDefault();
+
+    if (validationFieldsForm()) {
+        closeFormModal();
+        openSuccessModal();
+    }
 };

@@ -15,9 +15,14 @@
 html {
   font-family: "Outfit", sans-serif;
   font-weight: 400;
-  font-size: 0.694vw;
+  font-size: 0.52vw;
 }
 
+@media screen and (max-width: 1600px) {
+  html {
+    font-size: 0.694vw;
+  }
+}
 @media screen and (max-width: 992px) {
   html {
     font-size: 1.01vw;
@@ -107,9 +112,27 @@ ul li {
 }
 
 button {
+  font-family: "Outfit", sans-serif;
+  font-size: 2rem;
+  color: #ffffff;
   border: none;
   background-color: transparent;
   cursor: pointer;
+}
+
+label {
+  font-weight: 500;
+}
+
+input {
+  border: none;
+  background-color: transparent;
+  display: block;
+}
+input::placeholder {
+  color: #a7a7a7;
+  font-family: "Outfit", sans-serif;
+  font-weight: 400;
 }
 
 .container {
@@ -118,7 +141,7 @@ button {
   margin: 0 auto;
 }
 
-@media screen and (min-width: 1440px) {
+@media screen and (max-width: 1600px) {
   .container {
     width: 130rem;
   }
@@ -178,17 +201,17 @@ section {
   font-weight: 600;
 }
 .btn:hover {
-  transform: scale(105%);
+  transform: scale(1.05);
 }
 .btn:hover::after {
-  transform: rotate(-9deg) translateX(20rem);
+  transform: rotate(-11deg) translateX(20rem);
 }
 .btn::after {
   transition: transform 0.3s;
   content: "";
   position: absolute;
-  top: 0.8rem;
-  left: -20rem;
+  top: 2.5rem;
+  left: -21rem;
   width: 20rem;
   height: 10rem;
   border-radius: 4rem;
@@ -206,12 +229,12 @@ section {
 .btn--primary:active {
   background-color: #7b31d4;
 }
-.btn--primary:disabled {
-  cursor: not-allowed;
-  background-color: #b9b9b9;
-}
 .btn--primary::after {
   background-color: #181818;
+}
+.btn--primary.disabled {
+  cursor: not-allowed;
+  background-color: #b9b9b9;
 }
 .btn--secondary {
   background-color: #181818;
@@ -223,16 +246,25 @@ section {
 .btn--secondary:active {
   outline: 0.2rem solid #a64ced;
 }
-.btn--secondary:disabled {
+.btn--secondary::after {
+  background-color: rgba(149, 76, 237, 0.2);
+}
+.btn--secondary.disabled {
   cursor: not-allowed;
   color: #b9b9b9;
   outline: 0.2rem solid #b9b9b9;
 }
-.btn--secondary:disabled:hover {
+.btn--secondary.disabled:hover {
   background-color: #181818;
 }
-.btn--secondary::after {
-  background-color: rgba(149, 76, 237, 0.2);
+.btn--primary.disabled:hover, .btn--secondary.disabled:hover {
+  transform: initial;
+}
+.btn--primary.disabled:focus, .btn--secondary.disabled:focus {
+  outline: none;
+}
+.btn--primary.disabled::after, .btn--secondary.disabled::after {
+  display: none;
 }
 .btn--outline {
   border: 0.2rem solid #954ced;
@@ -242,6 +274,16 @@ section {
   color: #181818;
 }
 
+@media screen and (max-width: 425px) {
+  .btn:hover::after {
+    transform: rotate(-9deg) translateX(35rem);
+  }
+  .btn::after {
+    left: -35rem;
+    width: 36rem;
+    height: 13rem;
+  }
+}
 span.accent {
   position: relative;
 }
@@ -288,7 +330,7 @@ span.accent::before {
   }
 }
 .header .space {
-  padding: 0 6rem;
+  padding: 0 27rem;
 }
 .header__top {
   background-color: #ffaa4c;
@@ -339,9 +381,17 @@ span.accent::before {
   z-index: 100;
 }
 .header__bottom.space {
-  padding: 1.3rem 6rem;
+  padding: 1.3rem 27rem;
 }
 
+@media screen and (max-width: 1600px) {
+  .header .space {
+    padding: 0 6rem;
+  }
+  .header__bottom.space {
+    padding: 1.3rem 6rem;
+  }
+}
 @media screen and (max-width: 425px) {
   .header__top.space {
     padding: 0;
@@ -875,63 +925,145 @@ span.accent::before {
   margin-bottom: 1.6rem;
 }
 
-.cookie-modal {
+.modal {
   color: #383838;
   background-color: #ffffff;
-  display: block;
-  position: fixed;
-  bottom: 2rem;
-  right: 6.5rem;
-  left: 6.5rem;
   border-radius: 1.6rem;
+  z-index: 999;
+  position: relative;
 }
-.cookie-modal__btn--close {
+.modal__btn--close {
   position: absolute;
   right: 1.6rem;
   top: 1.6rem;
 }
-.cookie-modal--wrap {
+
+.modal_cookie {
+  bottom: 2rem;
+  right: 6.5rem;
+  left: 6.5rem;
+  position: fixed;
+}
+.modal_cookie--wrap {
   padding: 3rem 6rem 3rem 3rem;
 }
-.cookie-modal__text {
+.modal_cookie__text {
   margin-right: 14rem;
 }
-.cookie-modal__btn .btn--primary:first-child {
+.modal_cookie__btn .btn--primary:first-child {
   margin-right: 2rem;
 }
-.cookie-modal p {
+.modal_cookie p {
   font-weight: 300;
 }
 
 @media screen and (max-width: 992px) {
-  .cookie-modal__text {
+  .modal_cookie__text {
     margin-right: 2rem;
   }
-  .cookie-modal__btn.wrapper {
+  .modal_cookie__btn.wrapper {
     flex-direction: column;
     width: 100%;
   }
-  .cookie-modal__btn.wrapper .btn {
+  .modal_cookie__btn.wrapper .btn {
     width: 100%;
   }
-  .cookie-modal__btn.wrapper .btn--primary:first-child {
+  .modal_cookie__btn.wrapper .btn--primary:first-child {
     margin: 0 0 2rem;
   }
 }
 @media screen and (max-width: 425px) {
-  .cookie-modal {
+  .modal_cookie {
     left: 2rem;
     right: 2rem;
   }
-  .cookie-modal__text {
+  .modal_cookie__text {
     margin: 0 0 4rem;
   }
-  .cookie-modal--wrap {
+  .modal_cookie--wrap {
     flex-direction: column;
     padding: 3rem 2rem;
   }
-  .cookie-modal p {
+  .modal_cookie p {
     font-size: 2rem;
+  }
+}
+.modal-overlay,
+.modal_form {
+  display: none;
+  position: fixed;
+}
+
+.modal-overlay {
+  top: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: 999;
+  background-color: rgba(24, 24, 24, 0.2);
+}
+
+.modal_form {
+  top: 15%;
+  left: 35.5%;
+  right: 35.5%;
+  z-index: 1000;
+}
+.modal_form--wrap {
+  padding: 4rem;
+  display: grid;
+  row-gap: 1rem;
+}
+.modal_form__item {
+  font-size: 1.4rem;
+  display: flex;
+  flex-direction: column;
+}
+.modal_form__item input:-webkit-autofill {
+  background-color: #ffffff;
+  transition: background-color 5000s ease-in-out 0s;
+}
+.modal_form__item input {
+  width: 100%;
+  padding: 1rem 1.6rem;
+  margin: 0.5rem 0;
+  border-radius: 1.4rem;
+  outline: 0.1rem solid #f1f1f1;
+}
+.modal_form__item input:focus {
+  outline: 0.1rem solid #a7a7a7;
+}
+.modal_form__item input:invalid {
+  outline: 0.1rem solid #ec1211;
+}
+.modal_form .disabled input,
+.modal_form .disabled label {
+  cursor: not-allowed;
+}
+.modal_form .disabled label {
+  color: #f1f1f1;
+}
+.modal_form .required {
+  color: #ff6c2d;
+}
+.modal_form .error {
+  color: #ec1211;
+}
+.modal_form .email-validation,
+.modal_form .phone-validation {
+  display: none;
+}
+
+@media screen and (max-width: 768px) {
+  .modal_form {
+    left: 20%;
+    right: 20%;
+  }
+}
+@media screen and (max-width: 768px) {
+  .modal_form {
+    top: 12%;
+    left: 5%;
+    right: 5%;
   }
 }
 

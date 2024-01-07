@@ -1,6 +1,7 @@
 $font-p: 2rem;
 $font-h: 4.8rem;
 
+// TODO: Переделать переменные, от темного к светлому
 $primary-color-blue: #954ced;
 $primary-color-blue-2: #7b31d4;
 $primary-color-blue-3: #ba8bf3;
@@ -10,16 +11,21 @@ $secondary-color-orange: #ffaa4c;
 
 $black: #181818;
 $white: #ffffff;
+$red: #ec1211;
+$required: #ff6c2d;
 
+// TODO: Переделать переменные, от темного к светлому
 $dark-gray: #383838;
 $grayscale: #444444;
 $grayscale-2: #f5f5f5;
 $grayscale-3: #cfcfcf;
 $grayscale-4: #b9b9b9;
+$grayscale-5: #f1f1f1;
+$grayscale-6: #a7a7a7;
 $turquoise: #2fdbbc;
 
 // Breakpoints
-$extra-large: 1440px;
+$extra-large: 1600px;
 $large: 992px;
 $medium: 768px;
 $small: 425px;

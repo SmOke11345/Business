@@ -5,7 +5,7 @@
 // Header
 .header {
     .space {
-        padding: 0 6rem;
+        padding: 0 27rem;
     }
 
     &__top {
@@ -71,7 +71,19 @@
     }
 
     &__bottom.space {
-        padding: 1.3rem 6rem;
+        padding: 1.3rem 27rem;
+    }
+}
+
+@media screen and (max-width: $extra-large) {
+    .header {
+        .space {
+            padding: 0 6rem;
+        }
+
+        &__bottom.space {
+            padding: 1.3rem 6rem;
+        }
     }
 }
 
@@ -839,21 +851,25 @@
 
 // Cookie
 
-.cookie-modal {
+.modal {
     color: $dark-gray;
     background-color: $white;
-    display: block;
-    position: fixed;
-    bottom: 2rem;
-    right: 6.5rem;
-    left: 6.5rem;
     border-radius: 1.6rem;
+    z-index: 999;
+    position: relative;
 
     &__btn--close {
         position: absolute;
         right: 1.6rem;
         top: 1.6rem;
     }
+}
+
+.modal_cookie {
+    bottom: 2rem;
+    right: 6.5rem;
+    left: 6.5rem;
+    position: fixed;
 
     &--wrap {
         padding: 3rem 6rem 3rem 3rem;
@@ -873,7 +889,7 @@
 }
 
 @media screen and (max-width: $large) {
-    .cookie-modal {
+    .modal_cookie {
         &__text {
             margin-right: 2rem;
         }
@@ -896,7 +912,7 @@
 }
 
 @media screen and (max-width: $small) {
-    .cookie-modal {
+    .modal_cookie {
         left: 2rem;
         right: 2rem;
 
@@ -916,3 +932,102 @@
 }
 
 // End Cookie
+
+// Form modal
+
+.modal-overlay,
+.modal_form {
+    display: none;
+    position: fixed;
+}
+
+.modal-overlay {
+    top: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 999;
+    background-color: rgba($black, 20%);
+}
+
+// TODO: Упростить, для использования в нескольких местах.
+
+.modal_form {
+    top: 15%;
+    left: 35.5%;
+    right: 35.5%;
+    z-index: 1000;
+
+    &--wrap {
+        padding: 4rem;
+        display: grid;
+        row-gap: 1rem;
+    }
+
+    &__item {
+        font-size: $font-p - 0.6rem;
+        display: flex;
+        flex-direction: column;
+
+        input:-webkit-autofill {
+            background-color: $white;
+            transition: background-color 5000s ease-in-out 0s;
+        }
+
+        input {
+            width: 100%;
+            padding: 1rem 1.6rem;
+            margin: 0.5rem 0;
+            border-radius: 1.4rem;
+            outline: 0.1rem solid $grayscale-5;
+
+            &:focus {
+                outline: 0.1rem solid $grayscale-6;
+            }
+
+            &:invalid {
+                outline: 0.1rem solid $red;
+            }
+        }
+    }
+
+    .disabled {
+        input,
+        label {
+            cursor: not-allowed;
+        }
+
+        label {
+            color: $grayscale-5;
+        }
+    }
+
+    .required {
+        color: #ff6c2d;
+    }
+
+    .error {
+        color: $red;
+    }
+
+    .email-validation,
+    .phone-validation {
+        display: none;
+    }
+}
+
+@media screen and (max-width: $medium) {
+    .modal_form {
+        left: 20%;
+        right: 20%;
+    }
+}
+
+@media screen and (max-width: $medium) {
+    .modal_form {
+        top: 12%;
+        left: 5%;
+        right: 5%;
+    }
+}
+
+// End Form modal

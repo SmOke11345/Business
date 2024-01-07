@@ -17,7 +17,13 @@
 html {
     font-family: "Outfit", sans-serif;
     font-weight: 400;
-    font-size: 0.694vw; // при разрешении 1440px шрифт 10px
+    font-size: 0.52vw; // при разрешении 1920px шрифт 10px
+}
+
+@media screen and (max-width: $extra-large) {
+    html {
+        font-size: 0.694vw;
+    }
 }
 
 @media screen and (max-width: $large) {
@@ -116,7 +122,26 @@ ul li {
 }
 
 button {
+    font-family: "Outfit", sans-serif;
+    font-size: $font-p;
+    color: $white;
     border: none;
     background-color: transparent;
     cursor: pointer;
+}
+
+label {
+    font-weight: 500;
+}
+
+input {
+    border: none;
+    background-color: transparent;
+    display: block;
+
+    &::placeholder {
+        color: $grayscale-6;
+        font-family: "Outfit", sans-serif;
+        font-weight: 400;
+    }
 }
