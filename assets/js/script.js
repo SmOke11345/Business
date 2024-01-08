@@ -11,7 +11,8 @@ const changeHeaderBtn = (i) => {
     i === 0 ? (changeHeader = "business") : (changeHeader = "customers");
 
     if (changeHeader === "business") {
-        headerBtn.innerHTML = `<div class="btn btn--secondary"><a href="">Contact sales</a></div>`;
+        // TODO: при нажатии должно закрываться бургер меню и открываться модальное окно
+        headerBtn.innerHTML = `<div class="btn btn--secondary" onclick=""><a href="#">Contact sales</a></div>`;
     } else if (changeHeader === "customers") {
         headerBtn.innerHTML = `<div class="wrapper">
                     <div class="wrapper__item">
@@ -74,70 +75,70 @@ openMenu.onclick = () => {
 /**
  * Скрытие, отрытие модальных окон
  */
-const modalCookie = document.querySelector(".modal_cookie"),
-    modalForm = document.getElementById("modal_form"),
+const modalCookie = document.querySelector(".modal-cookie"),
+    modalForm = document.getElementById("modal-form"),
+    modalSuccess = document.getElementById("modal-success"),
     modalOverlay = document.getElementById("modal-overlay");
 
 const closeCookieModal = () => {
     modalCookie.style.display = "none";
 };
 
-const openFormModal = () => {
+const openModal = () => {
     modalForm.style.display = "block";
-    modalOverlay.style.display = "block";
+    modalOverlay.style.display = "flex";
 };
 
-const closeFormModal = () => {
+const closeModal = () => {
+    modalSuccess.style.display = "none";
     modalForm.style.display = "none";
     modalOverlay.style.display = "none";
 };
 
-modalOverlay.addEventListener("click", () => {
-    closeFormModal();
+modalOverlay.addEventListener("click", (event) => {
+    if (event.target === modalOverlay) {
+        closeModal();
+    }
 });
 
 const openSuccessModal = () => {
-    console.log("hello world");
+    modalForm.style.display = "none";
+    modalSuccess.style.display = "block";
+    modalOverlay.style.display = "flex";
 };
 
 /**
  * Валидация полей
  */
-const name = document.getElementById("name"),
+const form = document.querySelector(".form"),
+    name = document.getElementById("name"),
     fieldNameError = document.querySelector(".name-error"),
     email = document.getElementById("email"),
     fieldEmailError = document.querySelector(".email-error"),
     phone = document.getElementById("phone"),
     fieldPhoneError = document.querySelector(".phone-error");
 
-// TODO: Придумать как сделать, чтобы пропускать данные после успешной валидации.
-let error = 0;
-// TODO: так же как-то вывести общие сообщения об ошибках
 /**
  * Валидация формы перед отправлением
  */
-const validationFieldsForm = () => {
-    if (!name.value) {
-        fieldNameError.innerText = "This field is required.";
-    } else if (name.value) {
-        fieldNameError.innerText = "";
-    }
+const validateForm = () => {
+    !name.value
+        ? (fieldNameError.innerText = "This field is required.")
+        : (fieldNameError.innerText = "");
 
-    if (!email.value) {
-        fieldEmailError.innerText = "This field is required.";
-    } else if (email.value) {
-        fieldEmailError.innerText = "";
-    }
+    !email.value
+        ? (fieldEmailError.innerText = "This field is required.")
+        : (fieldEmailError.innerText = "");
 
-    if (!phone.value) {
-        fieldPhoneError.innerText = "This field is required.";
-    } else if (phone.value) {
-        fieldPhoneError.innerText = "";
-    }
+    !phone.value
+        ? (fieldPhoneError.innerText = "This field is required.")
+        : (fieldPhoneError.innerText = "");
 
-    console.log(error);
-
-    return error === 0;
+    return (
+        fieldNameError.innerText === "" &&
+        fieldEmailError.innerText === "" &&
+        fieldPhoneError.innerText === ""
+    );
 };
 
 /**
@@ -152,26 +153,30 @@ email.addEventListener("input", () => {
 });
 
 phone.addEventListener("input", () => {
+    phone.value.length === 1 && (phone.value = `+7${phone.value}`);
+    phone.value.length === 5 && (phone.value = phone.value + "-");
+    phone.value.length === 9 && (phone.value = phone.value + "-");
+    phone.value.length === 12 && (phone.value = phone.value + "-");
+
     const pattern = /^\+7[0-9]{3}-[0-9]{3}-[0-9]{2}-[0-9]{2}$/;
 
     // Проверяем есть ли в value phone regex
     if (!phone.value.match(pattern)) {
-        console.log(phone.value.match);
         fieldPhoneError.innerText = "Invalid phone";
     } else {
         fieldPhoneError.innerText = "";
     }
 });
 
-/**
- * Отправка формы
- * @param event
- */
-const onSubmit = (event) => {
-    event.preventDefault();
+const allRequired = document.querySelector(".all-required");
 
-    if (validationFieldsForm()) {
-        closeFormModal();
+form.addEventListener("submit", (event) => {
+    console.log(allRequired);
+    if (!validateForm()) {
+        allRequired.innerText = "Please fill in all required fields";
+    } else {
         openSuccessModal();
+        allRequired.innerText = "";
     }
-};
+    event.preventDefault();
+});

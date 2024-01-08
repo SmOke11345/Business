@@ -204,16 +204,16 @@ section {
   transform: scale(1.05);
 }
 .btn:hover::after {
-  transform: rotate(-11deg) translateX(20rem);
+  transform: rotate(-9deg) translateX(35rem);
 }
 .btn::after {
   transition: transform 0.3s;
   content: "";
   position: absolute;
+  left: -35rem;
+  width: 36rem;
+  height: 13rem;
   top: 2.5rem;
-  left: -21rem;
-  width: 20rem;
-  height: 10rem;
   border-radius: 4rem;
   z-index: -1;
 }
@@ -274,16 +274,6 @@ section {
   color: #181818;
 }
 
-@media screen and (max-width: 425px) {
-  .btn:hover::after {
-    transform: rotate(-9deg) translateX(35rem);
-  }
-  .btn::after {
-    left: -35rem;
-    width: 36rem;
-    height: 13rem;
-  }
-}
 span.accent {
   position: relative;
 }
@@ -327,6 +317,62 @@ span.accent::before {
   .section_wrap {
     padding: 4rem 0;
     row-gap: 4rem;
+  }
+}
+.modal {
+  color: #383838;
+  background-color: #ffffff;
+  border-radius: 1.6rem;
+  z-index: 999;
+  position: relative;
+}
+.modal__btn--close {
+  position: absolute;
+  right: 1.6rem;
+  top: 1.6rem;
+}
+
+.modal-with-overlay {
+  z-index: 1000;
+}
+.modal-with-overlay--wrap {
+  padding: 5rem 4rem 4rem;
+  display: grid;
+  row-gap: 1rem;
+}
+
+.modal-overlay,
+.modal-with-overlay {
+  display: none;
+  position: fixed;
+}
+
+.modal-overlay {
+  justify-content: center;
+  align-items: center;
+  top: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: 999;
+  background-color: rgba(24, 24, 24, 0.2);
+}
+
+@media screen and (max-width: 768px) {
+  .modal-with-overlay {
+    left: 20%;
+    right: 20%;
+  }
+  .modal-with-overlay--wrap {
+    padding: 3rem 1.6rem 2rem;
+  }
+}
+@media screen and (max-width: 425px) {
+  .modal-with-overlay {
+    left: 5%;
+    right: 5%;
+  }
+  .modal-with-overlay .btn {
+    width: 100%;
   }
 }
 .header .space {
@@ -925,145 +971,144 @@ span.accent::before {
   margin-bottom: 1.6rem;
 }
 
-.modal {
-  color: #383838;
-  background-color: #ffffff;
-  border-radius: 1.6rem;
-  z-index: 999;
-  position: relative;
-}
-.modal__btn--close {
-  position: absolute;
-  right: 1.6rem;
-  top: 1.6rem;
-}
-
-.modal_cookie {
+.modal-cookie {
   bottom: 2rem;
   right: 6.5rem;
   left: 6.5rem;
   position: fixed;
 }
-.modal_cookie--wrap {
+.modal-cookie--wrap {
   padding: 3rem 6rem 3rem 3rem;
 }
-.modal_cookie__text {
+.modal-cookie__text {
   margin-right: 14rem;
 }
-.modal_cookie__btn .btn--primary:first-child {
+.modal-cookie__btn .btn--primary:first-child {
   margin-right: 2rem;
 }
-.modal_cookie p {
+.modal-cookie p {
   font-weight: 300;
 }
 
 @media screen and (max-width: 992px) {
-  .modal_cookie__text {
+  .modal-cookie__text {
     margin-right: 2rem;
   }
-  .modal_cookie__btn.wrapper {
+  .modal-cookie__btn.wrapper {
     flex-direction: column;
     width: 100%;
   }
-  .modal_cookie__btn.wrapper .btn {
+  .modal-cookie__btn.wrapper .btn {
     width: 100%;
   }
-  .modal_cookie__btn.wrapper .btn--primary:first-child {
+  .modal-cookie__btn.wrapper .btn--primary:first-child {
     margin: 0 0 2rem;
   }
 }
 @media screen and (max-width: 425px) {
-  .modal_cookie {
+  .modal-cookie {
     left: 2rem;
     right: 2rem;
   }
-  .modal_cookie__text {
+  .modal-cookie__text {
     margin: 0 0 4rem;
   }
-  .modal_cookie--wrap {
+  .modal-cookie--wrap {
     flex-direction: column;
     padding: 3rem 2rem;
   }
-  .modal_cookie p {
+  .modal-cookie p {
     font-size: 2rem;
   }
 }
-.modal-overlay,
-.modal_form {
-  display: none;
-  position: fixed;
-}
-
-.modal-overlay {
-  top: 0;
-  width: 100%;
-  height: 100vh;
-  z-index: 999;
-  background-color: rgba(24, 24, 24, 0.2);
-}
-
-.modal_form {
-  top: 15%;
-  left: 35.5%;
-  right: 35.5%;
-  z-index: 1000;
-}
-.modal_form--wrap {
-  padding: 4rem;
-  display: grid;
-  row-gap: 1rem;
-}
-.modal_form__item {
+.modal-with-overlay label, .modal-with-overlay__text p, .modal-with-overlay__text a {
   font-size: 1.4rem;
+}
+.modal-with-overlay__item {
   display: flex;
   flex-direction: column;
+  position: relative;
 }
-.modal_form__item input:-webkit-autofill {
+.modal-with-overlay__item input:-webkit-autofill {
   background-color: #ffffff;
   transition: background-color 5000s ease-in-out 0s;
 }
-.modal_form__item input {
+.modal-with-overlay__item input {
   width: 100%;
   padding: 1rem 1.6rem;
   margin: 0.5rem 0;
   border-radius: 1.4rem;
   outline: 0.1rem solid #f1f1f1;
 }
-.modal_form__item input:focus {
+.modal-with-overlay__item input:focus {
   outline: 0.1rem solid #a7a7a7;
 }
-.modal_form__item input:invalid {
+.modal-with-overlay__item input:invalid {
   outline: 0.1rem solid #ec1211;
 }
-.modal_form .disabled input,
-.modal_form .disabled label {
+.modal-with-overlay__item input[type=tel] {
+  padding-left: 4.8rem;
+}
+.modal-with-overlay__item .flag {
+  position: absolute;
+  top: 2.6rem;
+  left: 1.6rem;
+}
+.modal-with-overlay__text--wrap {
+  row-gap: 2rem;
+  display: grid;
+}
+.modal-with-overlay__text a {
+  text-decoration: underline;
+  color: #954ced;
+}
+.modal-with-overlay .disabled input,
+.modal-with-overlay .disabled label {
   cursor: not-allowed;
 }
-.modal_form .disabled label {
+.modal-with-overlay .disabled label {
   color: #f1f1f1;
 }
-.modal_form .required {
+.modal-with-overlay .required {
   color: #ff6c2d;
 }
-.modal_form .error {
+.modal-with-overlay .error {
   color: #ec1211;
+  font-size: 1.2rem;
 }
-.modal_form .email-validation,
-.modal_form .phone-validation {
+.modal-with-overlay .all-required {
+  font-size: 1.6rem;
+}
+.modal-with-overlay .email-validation,
+.modal-with-overlay .phone-validation {
   display: none;
 }
 
-@media screen and (max-width: 768px) {
-  .modal_form {
-    left: 20%;
-    right: 20%;
-  }
+.modal-success {
+  display: grid;
+  row-gap: 2rem;
+  text-align: center;
 }
-@media screen and (max-width: 768px) {
-  .modal_form {
-    top: 12%;
-    left: 5%;
-    right: 5%;
+.modal-success__title h4 {
+  color: #a64ced;
+}
+.modal-success__subtitle {
+  width: 34.5rem;
+  margin: 0 auto;
+}
+.modal-success__subtitle p {
+  font-size: 2.4rem;
+}
+.modal-success__btn .btn {
+  width: 100%;
+}
+
+@media screen and (max-width: 425px) {
+  .modal-success__subtitle {
+    width: 100%;
+  }
+  .modal-success__subtitle p {
+    font-size: 2rem;
   }
 }
 

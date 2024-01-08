@@ -851,21 +851,7 @@
 
 // Cookie
 
-.modal {
-    color: $dark-gray;
-    background-color: $white;
-    border-radius: 1.6rem;
-    z-index: 999;
-    position: relative;
-
-    &__btn--close {
-        position: absolute;
-        right: 1.6rem;
-        top: 1.6rem;
-    }
-}
-
-.modal_cookie {
+.modal-cookie {
     bottom: 2rem;
     right: 6.5rem;
     left: 6.5rem;
@@ -889,7 +875,7 @@
 }
 
 @media screen and (max-width: $large) {
-    .modal_cookie {
+    .modal-cookie {
         &__text {
             margin-right: 2rem;
         }
@@ -912,7 +898,7 @@
 }
 
 @media screen and (max-width: $small) {
-    .modal_cookie {
+    .modal-cookie {
         left: 2rem;
         right: 2rem;
 
@@ -935,36 +921,14 @@
 
 // Form modal
 
-.modal-overlay,
-.modal_form {
-    display: none;
-    position: fixed;
-}
-
-.modal-overlay {
-    top: 0;
-    width: 100%;
-    height: 100vh;
-    z-index: 999;
-    background-color: rgba($black, 20%);
-}
-
-// TODO: Упростить, для использования в нескольких местах.
-
-.modal_form {
-    top: 15%;
-    left: 35.5%;
-    right: 35.5%;
-    z-index: 1000;
-
-    &--wrap {
-        padding: 4rem;
-        display: grid;
-        row-gap: 1rem;
+.modal-with-overlay {
+    label,
+    &__text p,
+    &__text a {
+        font-size: $font-p - 0.6rem;
     }
 
     &__item {
-        font-size: $font-p - 0.6rem;
         display: flex;
         flex-direction: column;
 
@@ -988,6 +952,30 @@
                 outline: 0.1rem solid $red;
             }
         }
+
+        input[type="tel"] {
+            padding-left: 4.8rem;
+        }
+
+        position: relative;
+
+        .flag {
+            position: absolute;
+            top: 2.6rem;
+            left: 1.6rem;
+        }
+    }
+
+    &__text--wrap {
+        row-gap: 2rem;
+        display: grid;
+    }
+
+    &__text {
+        a {
+            text-decoration: underline;
+            color: $primary-color-blue;
+        }
     }
 
     .disabled {
@@ -1007,6 +995,11 @@
 
     .error {
         color: $red;
+        font-size: $font-p - 0.8rem;
+    }
+
+    .all-required {
+        font-size: $font-p - 0.4rem;
     }
 
     .email-validation,
@@ -1015,18 +1008,39 @@
     }
 }
 
-@media screen and (max-width: $medium) {
-    .modal_form {
-        left: 20%;
-        right: 20%;
+.modal-success {
+    display: grid;
+    row-gap: 2rem;
+    text-align: center;
+
+    &__title h4 {
+        color: $primary-color-blue-4;
+    }
+
+    &__subtitle {
+        width: 34.5rem;
+        margin: 0 auto;
+
+        p {
+            font-size: $font-p + 0.4rem;
+        }
+    }
+
+    &__btn .btn {
+        width: 100%;
     }
 }
 
-@media screen and (max-width: $medium) {
-    .modal_form {
-        top: 12%;
-        left: 5%;
-        right: 5%;
+@media screen and (max-width: $small) {
+    .modal-success {
+        &__subtitle {
+            width: 100%;
+
+            p {
+                font-size: $font-p;
+            }
+        }
     }
 }
+
 // End Form modal

@@ -31,7 +31,7 @@
                     </button>
                 </div>
                 <div class="header__btn">
-                    <div class="btn btn--secondary" onclick="openFormModal()">
+                    <div class="btn btn--secondary" onclick="openModal()">
                         <a href="#">Contact sales</a>
                     </div>
                 </div>
@@ -57,7 +57,7 @@
                             </p>
                         </div>
                         <div class="hero__btn">
-                            <div class="btn btn--secondary" onclick="openFormModal()">
+                            <div class="btn btn--secondary" onclick="openModal()">
                                 <a href="#">Contact sales</a>
                             </div>
                         </div>
@@ -347,7 +347,7 @@
                                     <h2 class="font_64">Let Your Business Grow</h2>
                                 </div>
                                 <div class="business-grow__btn">
-                                    <div class="btn btn--primary">
+                                    <div class="btn btn--primary" onclick="openModal()">
                                         <a href="#">Contact sales</a>
                                     </div>
                                 </div>
@@ -465,7 +465,7 @@
                     </div>
                     <div class="footer__top--wrap wrapper">
                         <div class="footer__btn">
-                            <div class="btn btn--secondary">
+                            <div class="btn btn--secondary" onclick="openModal()">
                                 <a href="#">Contact sales</a>
                             </div>
                         </div>
@@ -509,8 +509,8 @@
             </div>
             <div class="burger-menu--wrap">
                 <div class="burger-menu__item">
-                    <div class="btn btn--secondary">
-                        <a href="">Contact sales</a>
+                    <div class="btn btn--secondary" onclick="openModal()">
+                        <a href="#">Contact sales</a>
                     </div>
                 </div>
                 <ul class="burger-menu__list">
@@ -523,8 +523,8 @@
             </div>
         </div>
         <!-- End Burger menu-->
-        <!-- Cookie modal -->
-        <div class="modal_cookie modal">
+        <!-- Modals -->
+        <div class="modal-cookie modal">
             <div class="modal__btn--close">
                 <button class="modal-close" onclick="closeCookieModal()">
                     <svg
@@ -543,15 +543,15 @@
                     </svg>
                 </button>
             </div>
-            <div class="modal_cookie--wrap wrapper">
-                <div class="modal_cookie__text">
+            <div class="modal-cookie--wrap wrapper">
+                <div class="modal-cookie__text">
                     <p>
                         This website uses cookies to ensure you get the best experience on
                         our website. They also allow us to analyze user behavior in order
                         to constantly improve the website for you.
                     </p>
                 </div>
-                <div class="modal_cookie__btn wrapper">
+                <div class="modal-cookie__btn wrapper">
                     <div class="btn btn--primary" onclick="closeCookieModal()">
                         <a href="#">Accept</a>
                     </div>
@@ -561,70 +561,163 @@
                 </div>
             </div>
         </div>
-        <!-- End Cookie modal -->
-        <!-- Form modal -->
-        <div class="modal_form" id="modal_form">
-            <div class="modal">
-                <div class="modal__btn--close">
-                    <button class="modal-close" onclick="closeFormModal()">
-                        <svg
-                            fill="none"
-                            height="26"
-                            viewBox="0 0 26 26"
-                            width="26"
-                            xmlns="http://www.w3.org/2000/svg">
-                            <rect fill="white" height="26" rx="13" width="26" />
-                            <path
-                                d="M12.9998 13L16.5353 16.5355M9.46424 16.5355L12.9998 13L9.46424 16.5355ZM16.5353 9.46447L12.9998 13L16.5353 9.46447ZM12.9998 13L9.46424 9.46447L12.9998 13Z"
-                                stroke="#B9B9B9"
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                                stroke-width="1.5" />
-                        </svg>
-                    </button>
+        <div class="modal-overlay" id="modal-overlay">
+            <div class="modal-with-overlay" id="modal-form">
+                <div class="modal">
+                    <div class="modal__btn--close">
+                        <button class="modal-close" onclick="closeModal()">
+                            <svg
+                                fill="none"
+                                height="26"
+                                viewBox="0 0 26 26"
+                                width="26"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <rect fill="white" height="26" rx="13" width="26" />
+                                <path
+                                    d="M12.9998 13L16.5353 16.5355M9.46424 16.5355L12.9998 13L9.46424 16.5355ZM16.5353 9.46447L12.9998 13L16.5353 9.46447ZM12.9998 13L9.46424 9.46447L12.9998 13Z"
+                                    stroke="#B9B9B9"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="1.5" />
+                            </svg>
+                        </button>
+                    </div>
+                    <form action="index.html" class="form" method="post">
+                        <div class="modal-with-overlay--wrap">
+                            <div class="modal-with-overlay__item">
+                                <label for="name"
+                                    >Name <span class="required">*</span></label
+                                >
+                                <input
+                                    id="name"
+                                    name="name"
+                                    placeholder="Enter name"
+                                    type="text" />
+                                <span class="name-error error"></span>
+                            </div>
+                            <div class="modal-with-overlay__item">
+                                <label for="email"
+                                    >Email <span class="required">*</span></label
+                                >
+                                <input
+                                    id="email"
+                                    name="email"
+                                    placeholder="Enter email"
+                                    type="email" />
+                                <span class="email-error error"></span>
+                            </div>
+                            <div class="modal-with-overlay__item">
+                                <label for="phone"
+                                    >Phone <span class="required">*</span></label
+                                >
+                                <span class="flag" id="flag">
+                                    <img
+                                        alt=""
+                                        src="./assets/img/common/russian-federation.svg" />
+                                </span>
+                                <input
+                                    id="phone"
+                                    maxlength="15"
+                                    name="phone"
+                                    pattern="[+][0-9]{4}-[0-9]{3}-[0-9]{2}-[0-9]{2}"
+                                    placeholder="+7999-999-99-99"
+                                    title="+7999-999-99-99"
+                                    type="tel" />
+                                <span class="phone-error error"></span>
+                            </div>
+                            <div class="modal-with-overlay__item">
+                                <label for="company">Company</label>
+                                <input
+                                    id="company"
+                                    name="company"
+                                    placeholder="Enter company"
+                                    type="text" />
+                            </div>
+                            <div class="modal-with-overlay__item">
+                                <label for="website">Website/Store URL</label>
+                                <input
+                                    id="website"
+                                    name="website"
+                                    placeholder="Enter Website/Store URL"
+                                    type="text" />
+                            </div>
+                            <div class="modal-with-overlay__text--wrap">
+                                <div class="modal-with-overlay__text">
+                                    <span class="all-required error"></span>
+                                </div>
+                                <div class="modal-with-overlay__text">
+                                    <p>
+                                        By submitting this form you are agreeing to
+                                        Budss’s
+                                        <br />
+                                        <a href="#">Privacy Policy</a> and
+                                        <a href="#">Terms of Use</a>
+                                    </p>
+                                </div>
+                                <button class="btn btn--primary" type="submit">
+                                    Contact sales
+                                </button>
+                            </div>
+                        </div>
+                    </form>
                 </div>
-                <form
-                    action="index.html"
-                    class="modal_form--wrap"
-                    method="post"
-                    onsubmit="onSubmit(event)">
-                    <div class="modal_form__item">
-                        <label for="name">Name <span class="required">*</span></label>
-                        <input id="name" name="name" placeholder="Name" type="text" />
-                        <span class="name-error error"></span>
+            </div>
+            <div class="modal-with-overlay" id="modal-success">
+                <div class="modal">
+                    <div class="modal">
+                        <div class="modal__btn--close">
+                            <button class="modal-close" onclick="closeModal()">
+                                <svg
+                                    fill="none"
+                                    height="26"
+                                    viewBox="0 0 26 26"
+                                    width="26"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <rect fill="white" height="26" rx="13" width="26" />
+                                    <path
+                                        d="M12.9998 13L16.5353 16.5355M9.46424 16.5355L12.9998 13L9.46424 16.5355ZM16.5353 9.46447L12.9998 13L16.5353 9.46447ZM12.9998 13L9.46424 9.46447L12.9998 13Z"
+                                        stroke="#B9B9B9"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        stroke-width="1.5" />
+                                </svg>
+                            </button>
+                        </div>
+                        <div class="modal-with-overlay--wrap">
+                            <div class="modal-success">
+                                <div class="modal-success__img">
+                                    <picture>
+                                        <source
+                                            media="(max-width: 425px)"
+                                            srcset="
+                                                ./assets/img/common/modal-success--small.svg
+                                            " />
+                                        <img
+                                            alt="modal-success"
+                                            src="./assets/img/common/modal-success.svg" />
+                                    </picture>
+                                </div>
+                                <div class="modal-success__title">
+                                    <h4 class="semi-bold">Thank you!</h4>
+                                </div>
+                                <div class="modal-success__subtitle">
+                                    <p>
+                                        Thank you, we have received your application and
+                                        will contact you soon!
+                                    </p>
+                                </div>
+                                <div class="modal-success__btn">
+                                    <div class="btn btn--primary">
+                                        <a href="#">Super!</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="modal_form__item">
-                        <label for="email">Email <span class="required">*</span></label>
-                        <input id="email" name="email" placeholder="Email" type="email" />
-                        <span class="email-error error"></span>
-                    </div>
-                    <div class="modal_form__item">
-                        <label for="phone">Phone <span class="required">*</span></label>
-                        <input id="phone" name="phone" placeholder="Phone" type="tel" />
-                        <span class="phone-error error"></span>
-                    </div>
-                    <div class="modal_form__item">
-                        <label for="company">Company</label>
-                        <input
-                            id="company"
-                            name="company"
-                            placeholder="Enter company"
-                            type="text" />
-                    </div>
-                    <div class="modal_form__item">
-                        <label for="website">Website/Store URL</label>
-                        <input
-                            id="website"
-                            name="website"
-                            placeholder="Enter Website/Store URL"
-                            type="text" />
-                    </div>
-                    <button class="btn btn--primary" type="submit">Contact sales</button>
-                </form>
+                </div>
             </div>
         </div>
-        <div class="modal-overlay" id="modal-overlay"></div>
-        <!-- End Form modal -->
+        <!-- End modals -->
         <!--  TODO: Убрать у одиночных тегов / -->
         <script src="./assets/js/script.js"></script>
     </body>
