@@ -45,9 +45,9 @@ html {
 }
 
 body {
-    background-color: $black;
+    background-color: $grayscale;
     font-size: $font-p;
-    color: $white;
+    color: $grayscale-7;
     height: 100vh;
 }
 
@@ -113,7 +113,7 @@ p {
 a {
     text-decoration: none;
     font-size: $font-p;
-    color: $white;
+    color: $grayscale-7;
     font-weight: 500;
 }
 
@@ -124,10 +124,10 @@ ul li {
 button {
     font-family: "Outfit", sans-serif;
     font-size: $font-p;
-    color: $white;
+    font-weight: 600;
+    color: $grayscale-7;
     border: none;
     background-color: transparent;
-    cursor: pointer;
 }
 
 label {
@@ -140,7 +140,7 @@ input {
     display: block;
 
     &::placeholder {
-        color: $grayscale-6;
+        color: $grayscale-30;
         font-family: "Outfit", sans-serif;
         font-weight: 400;
     }

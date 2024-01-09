@@ -60,16 +60,11 @@ section {
 .btn {
     cursor: pointer;
     width: 18.2rem;
-    text-align: center;
     padding: 1.6rem 3rem;
     border-radius: 1.6rem;
     transition: all 0.4s ease-in-out;
     position: relative;
     overflow: hidden;
-
-    a {
-        font-weight: 600;
-    }
 
     &:hover {
         transform: scale(1.05);
@@ -92,59 +87,59 @@ section {
     }
 
     &--primary {
-        background-color: $primary-color-blue;
+        background-color: $primary-2;
 
         &:hover {
-            background-color: $black;
+            background-color: $grayscale;
         }
 
         &:focus {
-            outline: 0.4rem solid $primary-color-blue-3;
+            outline: 0.4rem solid $primary-4;
         }
 
         &:active {
-            background-color: $primary-color-blue-2;
+            background-color: $primary;
         }
 
         &::after {
-            background-color: $black;
+            background-color: $grayscale;
         }
     }
 
-    &--primary.disabled {
+    &--primary:disabled {
         cursor: not-allowed;
-        background-color: $grayscale-4;
+        background-color: $grayscale-3;
     }
 
     &--secondary {
-        background-color: $black;
-        outline: 0.2rem solid $primary-color-blue;
+        background-color: $grayscale;
+        outline: 0.2rem solid $primary-2;
 
         &:hover {
-            background-color: rgba($primary-color-blue, 0.2);
+            background-color: rgba($primary-2, 0.2);
         }
 
         &:active {
-            outline: 0.2rem solid $primary-color-blue-4;
+            outline: 0.2rem solid $primary-3;
         }
 
         &::after {
-            background-color: rgba($primary-color-blue, 0.2);
+            background-color: rgba($primary-2, 0.2);
         }
     }
 
-    &--secondary.disabled {
+    &--secondary:disabled {
+        outline: 0.2rem solid $grayscale-3;
         cursor: not-allowed;
-        color: $grayscale-4;
-        outline: 0.2rem solid $grayscale-4;
+        color: $grayscale-3;
 
         &:hover {
             background-color: $black;
         }
     }
 
-    &--primary.disabled,
-    &--secondary.disabled {
+    &--primary:disabled,
+    &--secondary:disabled {
         &:hover {
             transform: initial;
         }
@@ -159,12 +154,9 @@ section {
     }
 
     &--outline {
-        border: 0.2rem solid $primary-color-blue;
+        border: 0.2rem solid $primary-2;
         background-color: transparent;
-
-        a {
-            color: $black;
-        }
+        color: $black;
     }
 }
 
@@ -173,7 +165,7 @@ span.accent {
 
     &::before {
         content: "";
-        background-color: $primary-color-blue;
+        background-color: $primary-2;
         transform: rotate(-1.67deg);
         height: 3.4rem;
         border-radius: 3rem;
@@ -201,7 +193,7 @@ span.accent {
 
 .section_wrap {
     padding: 10rem 0;
-    background-color: $grayscale-2;
+    background-color: $grayscale-6;
     color: $black;
     display: grid;
     row-gap: 10rem;
@@ -219,8 +211,8 @@ span.accent {
 }
 
 .modal {
-    color: $dark-gray;
-    background-color: $white;
+    color: $black;
+    background-color: $grayscale-7;
     border-radius: 1.6rem;
     z-index: 999;
     position: relative;
@@ -229,16 +221,18 @@ span.accent {
         position: absolute;
         right: 1.6rem;
         top: 1.6rem;
+
+        svg {
+            cursor: pointer;
+        }
     }
 }
 
 .modal-with-overlay {
     z-index: 1000;
 
-    &--wrap {
+    &__inner {
         padding: 5rem 4rem 4rem;
-        display: grid;
-        row-gap: 1rem;
     }
 }
 
@@ -255,7 +249,7 @@ span.accent {
     width: 100%;
     height: 100vh;
     z-index: 999;
-    background-color: rgba($black, 20%);
+    background-color: rgba($grayscale, 20%);
 }
 
 @media screen and (max-width: $medium) {
@@ -263,8 +257,8 @@ span.accent {
         left: 20%;
         right: 20%;
 
-        &--wrap {
-            padding: 3rem 1.6rem 2rem;
+        &__inner {
+            padding: 4rem 1.6rem 2rem;
         }
     }
 }

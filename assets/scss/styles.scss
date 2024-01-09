@@ -9,7 +9,7 @@
     }
 
     &__top {
-        background-color: $secondary-color-orange;
+        background-color: $secondary-2;
     }
 
     .nav {
@@ -20,16 +20,16 @@
 
             a {
                 font-size: $font-p - 0.4rem;
-                color: black;
+                color: $black;
             }
         }
 
         &__item.active {
-            background-color: $black;
+            background-color: $grayscale;
             border-radius: 2rem 2rem 0 0;
 
             a {
-                color: $white;
+                color: $grayscale-7;
             }
         }
     }
@@ -45,7 +45,7 @@
         }
 
         .header__btn .wrapper {
-            border: 0.1rem solid $primary-color-blue;
+            border: 0.1rem solid $primary-2;
             border-radius: 1.6rem;
             padding: 1.6rem 3rem;
             width: 13.5rem;
@@ -56,13 +56,13 @@
 
             &__item:first-child {
                 padding-right: 1.4rem;
-                border-right: 0.1rem solid $grayscale;
+                border-right: 0.1rem solid $grayscale-2;
             }
         }
     }
 
     &__bottom.fixed {
-        background-color: $black;
+        background-color: $grayscale;
         position: fixed;
         top: 0;
         right: 0;
@@ -251,12 +251,12 @@
         width: max-content;
 
         h2 {
-            color: $black;
+            color: $grayscale;
             text-shadow:
-                -1px -1px 0 $grayscale,
-                1px -1px 0 $grayscale,
-                -1px 1px 0 $grayscale,
-                1px 1px 0 $grayscale;
+                -1px -1px 0 $grayscale-2,
+                1px -1px 0 $grayscale-2,
+                -1px 1px 0 $grayscale-2,
+                1px 1px 0 $grayscale-2;
             font-size: $font-h * 2 + 3.2rem;
             text-transform: uppercase;
 
@@ -267,15 +267,15 @@
             }
 
             span.orange {
-                color: $secondary-color-orange;
+                color: $secondary-2;
             }
 
             span.blue {
-                color: $primary-color-blue;
+                color: $primary-2;
             }
 
             span.turquoise {
-                color: $turquoise;
+                color: $secondary;
             }
         }
     }
@@ -333,7 +333,7 @@
 // Achievements
 
 .section_achievements {
-    background-color: $primary-color-blue;
+    background-color: $primary-2;
     padding: 4rem 0;
 }
 
@@ -415,7 +415,7 @@
     row-gap: 2rem;
 
     &__item {
-        background-color: $grayscale-2;
+        background-color: $grayscale-6;
         border-radius: 3rem;
         padding: 4rem 4rem 5rem 4rem;
         overflow: hidden;
@@ -605,7 +605,7 @@
     }
 
     &--wrap {
-        border: 1px solid $grayscale-3;
+        border: 1px solid $grayscale-4;
         border-radius: 6rem;
         padding: 6rem 2rem;
     }
@@ -737,12 +737,12 @@
     }
 
     &__bottom {
-        border-top: 2px solid $grayscale;
+        border-top: 2px solid $grayscale-2;
         padding: 2rem 0;
 
         a,
         p {
-            color: $grayscale-4;
+            color: $grayscale-3;
             font-size: $font-p - 0.6rem;
             font-weight: 300;
         }
@@ -809,7 +809,7 @@
 
 .burger-menu {
     display: none;
-    background-color: $black;
+    background-color: $grayscale;
     position: fixed;
     height: 100vh;
     width: 100vw;
@@ -922,10 +922,28 @@
 // Form modal
 
 .modal-with-overlay {
+    label {
+        color: $grayscale-black;
+    }
+
     label,
     &__text p,
     &__text a {
         font-size: $font-p - 0.6rem;
+    }
+
+    &--wrap {
+        &:first-child {
+            display: grid;
+            row-gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        &:last-child {
+            .modal-with-overlay__text {
+                margin: 2rem 0;
+            }
+        }
     }
 
     &__item {
@@ -933,7 +951,7 @@
         flex-direction: column;
 
         input:-webkit-autofill {
-            background-color: $white;
+            background-color: $grayscale-7;
             transition: background-color 5000s ease-in-out 0s;
         }
 
@@ -942,10 +960,10 @@
             padding: 1rem 1.6rem;
             margin: 0.5rem 0;
             border-radius: 1.4rem;
-            outline: 0.1rem solid $grayscale-5;
+            outline: 0.1rem solid $grayscale-20;
 
             &:focus {
-                outline: 0.1rem solid $grayscale-6;
+                outline: 0.1rem solid $grayscale-30;
             }
 
             &:invalid {
@@ -966,15 +984,15 @@
         }
     }
 
-    &__text--wrap {
-        row-gap: 2rem;
-        display: grid;
-    }
-
     &__text {
+        &--wrap {
+            display: grid;
+            row-gap: 2rem;
+        }
+
         a {
             text-decoration: underline;
-            color: $primary-color-blue;
+            color: $primary-2;
         }
     }
 
@@ -985,7 +1003,7 @@
         }
 
         label {
-            color: $grayscale-5;
+            color: $grayscale-30;
         }
     }
 
@@ -1014,7 +1032,7 @@
     text-align: center;
 
     &__title h4 {
-        color: $primary-color-blue-4;
+        color: $primary-4;
     }
 
     &__subtitle {
@@ -1042,5 +1060,4 @@
         }
     }
 }
-
 // End Form modal
