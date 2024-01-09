@@ -6,13 +6,12 @@ const navItems = document.querySelectorAll(".nav__item"),
  * @param i
  */
 const changeHeaderBtn = (i) => {
-    let changeHeader = "business";
+    let changeHeader;
 
     i === 0 ? (changeHeader = "business") : (changeHeader = "customers");
 
     if (changeHeader === "business") {
-        // TODO: при нажатии должно закрываться бургер меню и открываться модальное окно
-        headerBtn.innerHTML = `<div class="btn btn--secondary" onclick=""><a href="#">Contact sales</a></div>`;
+        headerBtn.innerHTML = `<button class="btn btn--secondary" onclick="openModal()">Contact sales</button>`;
     } else if (changeHeader === "customers") {
         headerBtn.innerHTML = `<div class="wrapper">
                     <div class="wrapper__item">
@@ -85,6 +84,9 @@ const closeCookieModal = () => {
 };
 
 const openModal = () => {
+    if (burger.style.display === "block") {
+        burger.style.display = "none";
+    }
     modalForm.style.display = "block";
     modalOverlay.style.display = "flex";
 };
@@ -154,15 +156,12 @@ email.addEventListener("input", () => {
 
 phone.addEventListener("input", () => {
     phone.value.length === 1 && (phone.value = `+7${phone.value}`);
-    phone.value.length === 5 && (phone.value = phone.value + "-");
-    phone.value.length === 9 && (phone.value = phone.value + "-");
-    phone.value.length === 12 && (phone.value = phone.value + "-");
 
-    const pattern = /^\+7[0-9]{3}-[0-9]{3}-[0-9]{2}-[0-9]{2}$/;
+    const pattern = /^\+7[0-9]{3}[0-9]{3}[0-9]{2}[0-9]{2}$/;
 
     // Проверяем есть ли в value phone regex
     if (!phone.value.match(pattern)) {
-        fieldPhoneError.innerText = "Invalid phone";
+        fieldPhoneError.innerText = "Invalid phone number";
     } else {
         fieldPhoneError.innerText = "";
     }
@@ -171,7 +170,6 @@ phone.addEventListener("input", () => {
 const allRequired = document.querySelector(".all-required");
 
 form.addEventListener("submit", (event) => {
-    console.log(allRequired);
     if (!validateForm()) {
         allRequired.innerText = "Please fill in all required fields";
     } else {

@@ -114,10 +114,10 @@ ul li {
 button {
   font-family: "Outfit", sans-serif;
   font-size: 2rem;
+  font-weight: 600;
   color: #ffffff;
   border: none;
   background-color: transparent;
-  cursor: pointer;
 }
 
 label {
@@ -190,15 +190,11 @@ section {
 .btn {
   cursor: pointer;
   width: 18.2rem;
-  text-align: center;
   padding: 1.6rem 3rem;
   border-radius: 1.6rem;
   transition: all 0.4s ease-in-out;
   position: relative;
   overflow: hidden;
-}
-.btn a {
-  font-weight: 600;
 }
 .btn:hover {
   transform: scale(1.05);
@@ -232,7 +228,7 @@ section {
 .btn--primary::after {
   background-color: #181818;
 }
-.btn--primary.disabled {
+.btn--primary:disabled {
   cursor: not-allowed;
   background-color: #b9b9b9;
 }
@@ -249,29 +245,27 @@ section {
 .btn--secondary::after {
   background-color: rgba(149, 76, 237, 0.2);
 }
-.btn--secondary.disabled {
+.btn--secondary:disabled {
+  outline: 0.2rem solid #b9b9b9;
   cursor: not-allowed;
   color: #b9b9b9;
-  outline: 0.2rem solid #b9b9b9;
 }
-.btn--secondary.disabled:hover {
-  background-color: #181818;
+.btn--secondary:disabled:hover {
+  background-color: #000000;
 }
-.btn--primary.disabled:hover, .btn--secondary.disabled:hover {
+.btn--primary:disabled:hover, .btn--secondary:disabled:hover {
   transform: initial;
 }
-.btn--primary.disabled:focus, .btn--secondary.disabled:focus {
+.btn--primary:disabled:focus, .btn--secondary:disabled:focus {
   outline: none;
 }
-.btn--primary.disabled::after, .btn--secondary.disabled::after {
+.btn--primary:disabled::after, .btn--secondary:disabled::after {
   display: none;
 }
 .btn--outline {
   border: 0.2rem solid #954ced;
   background-color: transparent;
-}
-.btn--outline a {
-  color: #181818;
+  color: #000000;
 }
 
 span.accent {
@@ -305,7 +299,7 @@ span.accent::before {
 .section_wrap {
   padding: 10rem 0;
   background-color: #f5f5f5;
-  color: #181818;
+  color: #000000;
   display: grid;
   row-gap: 10rem;
 }
@@ -320,7 +314,7 @@ span.accent::before {
   }
 }
 .modal {
-  color: #383838;
+  color: #000000;
   background-color: #ffffff;
   border-radius: 1.6rem;
   z-index: 999;
@@ -331,14 +325,15 @@ span.accent::before {
   right: 1.6rem;
   top: 1.6rem;
 }
+.modal__btn--close svg {
+  cursor: pointer;
+}
 
 .modal-with-overlay {
   z-index: 1000;
 }
-.modal-with-overlay--wrap {
+.modal-with-overlay__inner {
   padding: 5rem 4rem 4rem;
-  display: grid;
-  row-gap: 1rem;
 }
 
 .modal-overlay,
@@ -362,8 +357,8 @@ span.accent::before {
     left: 20%;
     right: 20%;
   }
-  .modal-with-overlay--wrap {
-    padding: 3rem 1.6rem 2rem;
+  .modal-with-overlay__inner {
+    padding: 4rem 1.6rem 2rem;
   }
 }
 @media screen and (max-width: 425px) {
@@ -389,7 +384,7 @@ span.accent::before {
 }
 .header .nav__item a {
   font-size: 1.6rem;
-  color: black;
+  color: #000000;
 }
 .header .nav__item.active {
   background-color: #181818;
@@ -674,7 +669,7 @@ span.accent::before {
   }
 }
 .section_why-budss .grid {
-  color: #181818;
+  color: #000000;
   display: grid;
   row-gap: 2rem;
 }
@@ -1021,8 +1016,19 @@ span.accent::before {
     font-size: 2rem;
   }
 }
+.modal-with-overlay label {
+  color: #070707;
+}
 .modal-with-overlay label, .modal-with-overlay__text p, .modal-with-overlay__text a {
   font-size: 1.4rem;
+}
+.modal-with-overlay--wrap:first-child {
+  display: grid;
+  row-gap: 1rem;
+  margin-bottom: 2rem;
+}
+.modal-with-overlay--wrap:last-child .modal-with-overlay__text {
+  margin: 2rem 0;
 }
 .modal-with-overlay__item {
   display: flex;
@@ -1055,8 +1061,8 @@ span.accent::before {
   left: 1.6rem;
 }
 .modal-with-overlay__text--wrap {
-  row-gap: 2rem;
   display: grid;
+  row-gap: 2rem;
 }
 .modal-with-overlay__text a {
   text-decoration: underline;
@@ -1067,7 +1073,7 @@ span.accent::before {
   cursor: not-allowed;
 }
 .modal-with-overlay .disabled label {
-  color: #f1f1f1;
+  color: #a7a7a7;
 }
 .modal-with-overlay .required {
   color: #ff6c2d;
@@ -1090,7 +1096,7 @@ span.accent::before {
   text-align: center;
 }
 .modal-success__title h4 {
-  color: #a64ced;
+  color: #ba8bf3;
 }
 .modal-success__subtitle {
   width: 34.5rem;

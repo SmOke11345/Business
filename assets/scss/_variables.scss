@@ -1,28 +1,33 @@
+// Font size
 $font-p: 2rem;
 $font-h: 4.8rem;
 
-// TODO: Переделать переменные, от темного к светлому
-$primary-color-blue: #954ced;
-$primary-color-blue-2: #7b31d4;
-$primary-color-blue-3: #ba8bf3;
-$primary-color-blue-4: #a64ced;
+// Primary
+$primary: #7b31d4;
+$primary-2: #954ced;
+$primary-3: #a64ced;
+$primary-4: #ba8bf3;
 
-$secondary-color-orange: #ffaa4c;
+// Secondary
+$secondary: #2fdbbc;
+$secondary-2: #ffaa4c;
 
-$black: #181818;
-$white: #ffffff;
+// Additional
 $red: #ec1211;
 $required: #ff6c2d;
-
-// TODO: Переделать переменные, от темного к светлому
+$black: #000000;
 $dark-gray: #383838;
-$grayscale: #444444;
-$grayscale-2: #f5f5f5;
-$grayscale-3: #cfcfcf;
-$grayscale-4: #b9b9b9;
-$grayscale-5: #f1f1f1;
-$grayscale-6: #a7a7a7;
-$turquoise: #2fdbbc;
+
+// Grayscale
+$grayscale-black: #070707;
+$grayscale: #181818;
+$grayscale-2: #444444;
+$grayscale-3: #b9b9b9;
+$grayscale-4: #cfcfcf;
+$grayscale-6: #f5f5f5;
+$grayscale-7: #ffffff;
+$grayscale-20: #f1f1f1;
+$grayscale-30: #a7a7a7;
 
 // Breakpoints
 $extra-large: 1600px;
