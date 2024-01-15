@@ -3,12 +3,12 @@ const navItems = document.querySelectorAll(".nav__item"),
 
 /**
  * Изменение вида header btn
- * @param i
+ * @param index
  */
-const changeHeaderBtn = (i) => {
+const changeHeaderBtn = (index) => {
     let changeHeader;
 
-    i === 0 ? (changeHeader = "business") : (changeHeader = "customers");
+    index === 0 ? (changeHeader = "business") : (changeHeader = "customers");
 
     if (changeHeader === "business") {
         headerBtn.innerHTML = `<button class="btn btn--secondary" onclick="openModal()">Contact sales</button>`;
@@ -31,18 +31,15 @@ const changeHeaderBtn = (i) => {
 /**
  * Изменение стилей в nav
  */
-for (let i = 0; i < navItems.length; i++) {
-    navItems[i].addEventListener("click", () => {
-        // Убираем у всех элементов класс active
+navItems.forEach((el, index) => {
+    el.addEventListener("click", () => {
         for (let j = 0; j < navItems.length; j++) {
             navItems[j].classList.remove("active");
         }
-        // Добавляем класс active к элементу, на котором было событие клик
-        navItems[i].classList.add("active");
-
-        changeHeaderBtn(i);
+        el.classList.add("active");
+        changeHeaderBtn(index);
     });
-}
+});
 
 /**
  * Фиксирование header

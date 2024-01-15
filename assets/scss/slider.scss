@@ -1,0 +1,100 @@
+@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@700&display=swap");
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Outfit", sans-serif;
+    font-size: 50px;
+    font-weight: 700;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.slider {
+    &--top {
+        display: grid;
+        grid-template-columns: 1fr 3fr 1fr;
+        align-items: center;
+        justify-items: center;
+    }
+
+    &--bottom {
+        display: flex;
+        justify-content: center;
+        margin: 10px auto 0;
+    }
+
+    &--wrap {
+        width: 520px;
+        overflow: hidden;
+    }
+
+    &__item {
+        display: flex;
+        border-radius: 15px;
+        width: 500px;
+        height: 250px;
+        justify-content: center;
+        align-items: center;
+        background-color: #0000ff;
+        margin-right: 20px;
+        p {
+            color: #ffffff;
+        }
+    }
+
+    .img {
+        background: url("../../assets/img/slider/slider-arrows.png") no-repeat center
+            center;
+        cursor: pointer;
+        width: 44px;
+        height: 44px;
+    }
+
+    &__arrow {
+        &--left.img {
+            background-position: -14px -20px;
+        }
+
+        &--right.img {
+            background-position: -71px -20px;
+        }
+    }
+
+    &__nav {
+        cursor: pointer;
+        width: 20px;
+        height: 20px;
+        border-radius: 15px;
+        border: 1px solid #0000ff;
+        background-color: #ffffff;
+        position: relative;
+        &:not(:last-child) {
+            margin-right: 10px;
+        }
+    }
+
+    .active-nav {
+        &::after {
+            content: "";
+            width: 12px;
+            height: 12px;
+            top: 3.5px;
+            left: 3.5px;
+            border-radius: 15px;
+            position: absolute;
+            background-color: #ff0000;
+        }
+    }
+
+    &__inner {
+        display: flex;
+        position: relative;
+    }
+}
