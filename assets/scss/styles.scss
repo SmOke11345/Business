@@ -731,8 +731,14 @@
             margin-right: 4rem;
         }
 
-        .footer__img:nth-child(2) {
-            margin-right: 2rem;
+        .footer__img {
+            img {
+                width: 19.6rem;
+            }
+
+            &:nth-child(2) {
+                margin-right: 2rem;
+            }
         }
     }
 
@@ -956,6 +962,7 @@
         }
 
         input {
+            font-size: $font-p - 0.6rem;
             width: 100%;
             padding: 1rem 1.6rem;
             margin: 0.5rem 0;
@@ -978,6 +985,10 @@
         position: relative;
 
         .flag {
+            img {
+                width: 2.2rem;
+            }
+
             position: absolute;
             top: 2.6rem;
             left: 1.6rem;
@@ -1060,4 +1071,5 @@
         }
     }
 }
+
 // End Form modal
