@@ -42,7 +42,7 @@ navItems.forEach((el, index) => {
 });
 
 /**
- * Фиксирование header
+ * Фиксированный header
  */
 const headerBottom = document.querySelector(".header__bottom");
 
@@ -68,9 +68,7 @@ openMenu.onclick = () => {
     burger.style.display = "block";
 };
 
-/**
- * Скрытие, отрытие модальных окон
- */
+// Скрытие, отрытие модальных окон
 const modalCookie = document.querySelector(".modal-cookie"),
     modalForm = document.getElementById("modal-form"),
     modalSuccess = document.getElementById("modal-success"),
@@ -106,9 +104,7 @@ const openSuccessModal = () => {
     modalOverlay.style.display = "flex";
 };
 
-/**
- * Валидация полей
- */
+// Валидация полей
 const form = document.querySelector(".form"),
     name = document.getElementById("name"),
     fieldNameError = document.querySelector(".name-error"),
@@ -164,6 +160,9 @@ phone.addEventListener("input", () => {
     }
 });
 
+/**
+ * Отправка формы.
+ */
 const allRequired = document.querySelector(".all-required");
 
 form.addEventListener("submit", (event) => {

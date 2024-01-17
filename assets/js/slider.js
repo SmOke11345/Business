@@ -3,22 +3,43 @@ const leftArrow = document.querySelector(".slider__arrow--left"),
     nav = document.querySelectorAll(".slider--bottom"),
     slider = document.querySelector(".slider__inner");
 
-const sliderItems = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"];
+const sliderItems = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"]; // Определения количества слайдов.
 
 const width = 500;
 let activeIndex = 0;
-let active = true;
+let active = true; // Для анимации.
 
-const initNav = () => {
-    for (let i = 0; i < sliderItems.length; i++) {
-        const navElement = document.createElement("div");
-        navElement.classList.add("slider__nav");
-        nav[0].appendChild(navElement);
-    }
-    nav[0].children[0].classList.add("active-nav");
-    navListener();
+/**
+ * Создание слайда
+ * @param index
+ * @param direction
+ * @param prev
+ */
+const createSlide = (index, direction, prev) => {
+    const div = document.createElement("div");
+    div.classList.add("slider__item");
+
+    direction === 1 ? slider.prepend(div) : slider.appendChild(div);
+
+    if (prev) div.style.width = 0 + "px";
+
+    div.innerHTML = `<p>${sliderItems[index]}</p>`;
 };
 
+/**
+ * Изменение активного элемента точек навигации (nav).
+ * @param index
+ */
+const changeNavElements = (index) => {
+    for (let i = 0; i < nav[0].children.length; i++) {
+        nav[0].children[i].classList.remove("active-nav");
+    }
+    nav[0].children[index].classList.add("active-nav");
+};
+
+/**
+ * Прослушивание точек навигации, при нажатии мышью.
+ */
 const navListener = () => {
     const navItems = document.querySelectorAll(".slider__nav");
 
@@ -49,24 +70,24 @@ const navListener = () => {
     });
 };
 
-const changeNavElements = (index) => {
-    for (let i = 0; i < nav[0].children.length; i++) {
-        nav[0].children[i].classList.remove("active-nav");
+/**
+ * Инициализация точек навигации.
+ */
+const initNav = () => {
+    for (let i = 0; i < sliderItems.length; i++) {
+        const navElement = document.createElement("div");
+        navElement.classList.add("slider__nav");
+        nav[0].appendChild(navElement);
     }
-    nav[0].children[index].classList.add("active-nav");
+    nav[0].children[0].classList.add("active-nav");
+
+    navListener();
 };
 
-const createSlide = (index, direction, prev) => {
-    const div = document.createElement("div");
-    div.classList.add("slider__item");
-
-    direction === 1 ? slider.prepend(div) : slider.appendChild(div);
-
-    if (prev) div.style.width = 0 + "px";
-
-    div.innerHTML = `<p>${sliderItems[index]}</p>`;
-};
-
+/**
+ * Инициализация слайдера.
+ * @param index
+ */
 const initSlider = (index) => {
     createSlide(index, -1);
 
@@ -74,6 +95,9 @@ const initSlider = (index) => {
     prevSlideClone();
 };
 
+/**
+ * Добавление следующего слайда.
+ */
 const nextSlideClone = () => {
     let nextIndex = activeIndex + 1;
 
@@ -84,6 +108,9 @@ const nextSlideClone = () => {
     createSlide(nextIndex, -1);
 };
 
+/**
+ * Добавление предыдущего слайда.
+ */
 const prevSlideClone = (prev = false) => {
     let prevIndex = activeIndex - 1;
 
@@ -94,6 +121,9 @@ const prevSlideClone = (prev = false) => {
     createSlide(prevIndex, 1, prev);
 };
 
+/**
+ * Переход к следующему слайду.
+ */
 const nextSlide = () => {
     slider.style.left = "-520px";
     if (!active) return;
@@ -118,6 +148,9 @@ const nextSlide = () => {
     });
 };
 
+/**
+ * Переход к предыдущему слайду.
+ */
 const prevSlide = () => {
     slider.style.left = "-520px";
     if (!active) return;
@@ -152,6 +185,12 @@ leftArrow.addEventListener("click", () => {
     prevSlide();
 });
 
+/**
+ * Анимация появления слайда.
+ * @param duration
+ * @param draw
+ * @param removeElement
+ */
 const animate = ({ duration, draw, removeElement }) => {
     let start = performance.now();
 
